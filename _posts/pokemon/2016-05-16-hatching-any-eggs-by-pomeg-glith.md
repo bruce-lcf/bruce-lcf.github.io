@@ -8,6 +8,7 @@ image:
   feature:
   teaser: lugia.png
   thumb:
+avatar: bio-photo.png
 ads: false
 ---
 
