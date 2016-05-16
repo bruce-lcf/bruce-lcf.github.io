@@ -73,6 +73,7 @@ ads: false
 ![step4](http://i1292.photobucket.com/albums/b580/shankenew/step4_zps1vffikmc.png)
 
 5.对A使用任意能够回复HP的道具，下图以高级伤药(Hyper Potion)为例	
+
 ![step5](http://i1292.photobucket.com/albums/b580/shankenew/step5_zpshyoyrpmh.png)	![step5_a](http://i1292.photobucket.com/albums/b580/shankenew/step5_a_zpskk2gdtk9.png)
 
 6.再次去野外触发遇敌。
