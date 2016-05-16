@@ -1,0 +1,132 @@
+<h1 id="pomeg-berry-glitch386pm">利用绿宝石红榴漏洞(Pomeg Berry Glitch)孵化编号386以内的任意PM</h1>
+
+<h2 id="section">什么是红榴漏洞？</h2>
+
+<p>让有一定HP努力值的PM的当前HP处于1点，再喂给该PM一个红榴果（作用：降低HP努力提升亲密度），会使得该PM的HP变成一个正常游戏中不可能出现的数字。</p>
+
+<blockquote>
+  <p>举例来说，有一只100级的神奇宝贝有8点HP基础得点，HP是1/100。对它使用红榴后，它的HP基础得点会变为0，这时它的HP就会变成-1/98。但因为游戏在这里使用的数据存储方式是无符号整数存储，HP会变成一个很大的数字，在这例子里就是65535，然后会显示为?35。</p>
+</blockquote>
+
+<p><img src="http://i1292.photobucket.com/albums/b580/shankenew/glitch_zpsp6ehxhle.png" alt="pomeg" /></p>
+
+<hr />
+
+<h2 id="pm">孵化出任意PM的原理</h2>
+
+<p>触发红榴漏洞之后，经过一系列操作，会打乱队伍中某个PM的数据组织顺序(Data Substructures)。继而可以让某些数据项成为新的决定PM种类的数据。</p>
+
+<p>第三世代PM的数据组织结构如下表：</p>
+
+<p><img src="http://i1292.photobucket.com/albums/b580/shankenew/new_zpsgftuasfy.png" alt="" /></p>
+
+<blockquote>
+  <p>The order of the structures is determined by the personality value of the Pokémon modulo 24, as shown below, where G, A, E, and M stand for the substructures growth, attacks, EVs and condition, and miscellaneous, respectively.</p>
+</blockquote>
+
+<p> </p>
+
+<blockquote>
+  <p>数据子结构的组织顺序取决于PM的PID对24取模的结果。下表中的G，A，E，M分别代表成长(Growth)、攻击(Attack)、努力值及状态(EVs &amp; Conditions)和杂项(Miscellnaneous)。</p>
+</blockquote>
+
+<p>数据组织顺序如下表：</p>
+
+<p><img src="http://i1292.photobucket.com/albums/b580/shankenew/order_zpsayigkyvu.png" alt="order" /></p>
+
+<hr />
+
+<h2 id="deoxys">一个操作实例：获得一个从蛋中孵出的Deoxys</h2>
+
+<h3 id="section-1">事先的准备</h3>
+
+<ul>
+  <li>一只级别足够高，有一些HP努力值的PM（这里以<a href="http://bulbapedia.bulbagarden.net/wiki/Swampert_(Pok%C3%A9mon)">#260 Swampert</a>为例），用以触发红榴漏洞。下面的叙述中<strong>简称A</strong>。</li>
+  <li>两箱子<strong>完全相同</strong>的某PM，以一定间隔置于1、2号两个箱子（这里以<a href="http://bulbapedia.bulbagarden.net/wiki/Kadabra_(Pok%C3%A9mon)">#064 Kadabra</a>为例，具体间隔可以参考下面的例子），下述<strong>简称B</strong>。这样多数量的同一PM可以使用绿宝石战斗边疆的复制漏洞获得。至于对于这只PM有何具体要求，<strong>在下文中</strong>会详细说明。</li>
+</ul>
+
+<h3 id="section-2">步骤</h3>
+
+<p>1.将A置于队首，并控制它到1点HP。带上若干只处于濒死状态的PM，最后再带上一只B。</p>
+
+<p><img src="http://i1292.photobucket.com/albums/b580/shankenew/step1_zpszf4leukb.png" alt="step1" /></p>
+
+<p>2.喂给A一个红榴果(Pomeg Cherry)，触发漏洞。</p>
+
+<p><img src="http://i1292.photobucket.com/albums/b580/shankenew/step2_a_zpsmlbsouox.png" alt="step2_a" /> <img src="http://i1292.photobucket.com/albums/b580/shankenew/step2_b_zpsdfwhmtcb.png" alt="step2_b" />	<img src="http://i1292.photobucket.com/albums/b580/shankenew/step2_c_zps2az8rwrk.png" alt="step2_c" /></p>
+
+<p>3.触发与野生PM的战斗，由A切换到B，然后逃跑。（为了顺利逃跑，建议在PM等级较低的地方进行本步骤）</p>
+
+<p><img src="http://i1292.photobucket.com/albums/b580/shankenew/step3_a_zpskbgdif30.png" alt="step3_a" />	
+<img src="http://i1292.photobucket.com/albums/b580/shankenew/step3_b_zps02kglcos.png" alt="step3_b" />	
+<img src="http://i1292.photobucket.com/albums/b580/shankenew/step3_c_zpsvliyyb1n.png" alt="step3_c" /></p>
+
+<p>4.将B存回电脑的任意一个箱子。</p>
+
+<p><img src="http://i1292.photobucket.com/albums/b580/shankenew/step4_zps1vffikmc.png" alt="step4" /></p>
+
+<p>5.对A使用任意能够回复HP的道具，下图以高级伤药(Hyper Potion)为例	
+<img src="http://i1292.photobucket.com/albums/b580/shankenew/step5_zpshyoyrpmh.png" alt="step5" />	<img src="http://i1292.photobucket.com/albums/b580/shankenew/step5_a_zpskk2gdtk9.png" alt="step5_a" /></p>
+
+<p>6.再次去野外触发遇敌。</p>
+
+<p><img src="http://i1292.photobucket.com/albums/b580/shankenew/step6_a_zpsibprqd8r.png" alt="step6_a" /></p>
+
+<p>调出“Pokemon”菜单，查看A的状态	。</p>
+
+<p><img src="http://i1292.photobucket.com/albums/b580/shankenew/step6_b_zpsqpmz6zvt.png" alt="step6_b" />
+<img src="http://i1292.photobucket.com/albums/b580/shankenew/step6_c_zpsn1pdfonb.png" alt="step6_c" /></p>
+
+<p>按下方向键，直到光标正好指到“CANCEL”选项。</p>
+
+<p><img src="http://i1292.photobucket.com/albums/b580/shankenew/step6_d_zpssialri5v.png" alt="step6_d" /></p>
+
+<p><strong>按住</strong>上方向键，直到出现下图所示的情形。然后退出战斗。</p>
+
+<p><img src="http://i1292.photobucket.com/albums/b580/shankenew/step6_e_zpssw69axlv.png" alt="step6_e" />
+<img src="http://i1292.photobucket.com/albums/b580/shankenew/step6_f_zps91eu99a0.png" alt="step6_f" /></p>
+
+<p>7.如果足够幸运，你可以在1，2号箱子里的众多坏蛋(bag eggs)中找到一个好蛋(egg)；如果不够幸运，请从步骤1重新来过。</p>
+
+<p><img src="http://i1292.photobucket.com/albums/b580/shankenew/step7_zps6h1jmpar.png" alt="step7" /></p>
+
+<p>8.将这个蛋孵化，得到目标。</p>
+
+<p><img src="http://i1292.photobucket.com/albums/b580/shankenew/step8_zpskanqgtqd.png" alt="step8" />
+<img src="http://i1292.photobucket.com/albums/b580/shankenew/step8_a_zpsqhldsjid.png" alt="step8_a" /></p>
+
+<hr />
+
+<h3 id="section-3">一些重要的补充说明</h3>
+
+<p>最终得到的蛋孵化出什么完全由B决定，所以下面详细解释B和孵化出的东西有何关联。</p>
+
+<p>这里的B，也就是勇吉拉(<a href="http://bulbapedia.bulbagarden.net/wiki/Kadabra_(Pok%C3%A9mon)">#064 Kadabra</a>)，我选取了<a href="http://bulbapedia.bulbagarden.net/wiki/Personality_value">PID</a>为：0x56B0009。经过红榴漏洞，得到的目标的PID会在此基础上加上0x40000000。也就是0x456B0009。0x56B0009对24取模为1，0x456B0009对24取模为17。对应一开始的表格，也就是数据顺序由 <strong>GAME</strong> 变为 <strong>EMAG</strong> 。目标的 <strong>Growth</strong> 对应原来的 <strong>EVs &amp; Conditions</strong>。而 <strong>Growth</strong> 的前两个字节(byte)决定了PM的种类。也就是我们只需要让原来的 <strong>EVs &amp; Conditions</strong> 的前两个字节是我们目标PM的_编号_（要查询编号，请参看<a href="http://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_index_number_(Generation_III)">本链接</a>）。这里 <strong>#386 Deoxys</strong> 的编号16进制下为0x19A，分拆成两个byte就是 0x1 和 0x9A，在十进制下为 1 和 154，也就是我们只需要让勇吉拉(<a href="http://bulbapedia.bulbagarden.net/wiki/Kadabra_(Pok%C3%A9mon)">#064 Kadabra</a>)的物攻努力值为1，HP努力值为154，经过红榴漏洞之后，得到的蛋的PM种类对应的就是 #386 Deoxys。</p>
+
+<p>总结：以上改变蛋的物种效果，本质上就是利用游戏漏洞，打乱了原来的数据结构的排列顺序。至于以何种方式打乱，需要知道我们使用的称为“B”的PM的PID是多少，然后查上面提供的表格。一般来说，以努力值(E)代替物种(G)的方法比较普适，可以得到全部的386种PM。</p>
+
+<p>也有一些PID提供了以攻击技能(A)代替物种(G)的置乱方式。具体技能的编码表，我会在最后的参考链接里给出。由于技能数目不足386，这种方式不能获得全部386种PM，但相对上述的以(E)代替(G)的方式也有好处，就是有机会通过这种方式获得理想个体值的PM。上述的那个实例_几乎_无法对获得PM的个体值做任何的控制。</p>
+
+<p><strong>最后提醒一下</strong>：由于数据被全部打乱，获得的PM的技能会出现非法乱码，为了防止出现死机等不良情况，请把获得的PM放到饲养屋提升足够的等级，用合法技能全部替代后再领出。</p>
+
+<p>吐槽：我获得的这只Deoxys是不听话的，而听话与否由Miscellaneous的最后一个bit决定，然而本例中的置乱方式下，目标的(M)对应的是原来的(A)，最后一个bit和第四个技能的PP数相关，为了使最后一个bit为1，我需要第四个技能的PP数在128以上。而游戏内PP数最大就是64，也就是我无论如何都不可能在游戏内通过这种方式获得一只听话的Deoxys，真是残念。</p>
+
+<p>通过这个漏洞获得的坏蛋可以参与与NPC的战斗，而且可以无限制逃跑，该成果可以应用到绿宝石速通上，然而好像红榴果获得的时机在流程中有些偏后了。</p>
+
+<p>~~ 利用pomeg glitch向游戏注入汇编代码还在研究中 ~~</p>
+
+<hr />
+<p>### 参考链接</p>
+
+<p><a href="https://www.youtube.com/watch?v=nOEwPnv2TFM">视频教程</a>（Youtube链接）</p>
+
+<p><a href="https://www.youtube.com/watch?v=KME8eusvRAc">Video tutorial for Pomeg Berry Glitch</a>（关于红榴漏洞的视频）</p>
+
+<p>Bulbapedia相关页面：</p>
+
+<ul>
+  <li><a href="http://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_data_substructures_in_Generation_III">Pokémon data substructures in Generation III</a></li>
+  <li><a href="http://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_index_number_(Generation_III)">List of Pokémon by index number (Generation III)</a></li>
+  <li><a href="http://bulbapedia.bulbagarden.net/wiki/List_of_moves">List of moves</a>（第三世代最后一个技能是 #354 Psycho Boost）</li>
+  <li><a href="http://bulbapedia.bulbagarden.net/wiki/Glitzer_Popping">Glitzer Popping</a></li>
+</ul>

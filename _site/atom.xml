@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>Bruce Steveon's Blog</title>
+  <generator uri="https://github.com/jekyll/jekyll">Jekyll v3.1.3</generator>
+    <icon>/apple-touch-icon-precomposed.png</icon>
+  <subtitle></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="/" rel="alternate" type="text/html"/>
+  <updated>2016-05-16T23:11:56+08:00</updated>
+  <id>/</id>
+  <author>
+    <name>Bruce Steveon</name>
+    <uri>/</uri>
+    <email>tianyu.bruce@gmail.com</email>
+  </author>
+
+  
+  <entry>
+    <title>Hatching Any Eggs by Pomeg Glitch</title>
+    <link href="/hatching-any-eggs-by-pomeg-glitch/"/>
+    <updated>2016-05-16T20:19:51+08:00</updated>
+    <id>/hatching-any-eggs-by-pomeg-glitch</id>
+    <author>
+      <name>Bruce Steveon</name>
+      <uri>/</uri>
+      <email>tianyu.bruce@gmail.com</email>
+    </author>
+    <content type="html">
+      
+      &lt;h1 id=&quot;pomeg-berry-glitch386pm&quot;&gt;利用绿宝石红榴漏洞(Pomeg Berry Glitch)孵化编号386以内的任意PM&lt;/h1&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;什么是红榴漏洞？&lt;/h2&gt;
+
+&lt;p&gt;让有一定HP努力值的PM的当前HP处于1点，再喂给该PM一个红榴果（作用：降低HP努力提升亲密度），会使得该PM的HP变成一个正常游戏中不可能出现的数字。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;举例来说，有一只100级的神奇宝贝有8点HP基础得点，HP是1/100。对它使用红榴后，它的HP基础得点会变为0，这时它的HP就会变成-1/98。但因为游戏在这里使用的数据存储方式是无符号整数存储，HP会变成一个很大的数字，在这例子里就是65535，然后会显示为?35。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/glitch_zpsp6ehxhle.png&quot; alt=&quot;pomeg&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;pm&quot;&gt;孵化出任意PM的原理&lt;/h2&gt;
+
+&lt;p&gt;触发红榴漏洞之后，经过一系列操作，会打乱队伍中某个PM的数据组织顺序(Data Substructures)。继而可以让某些数据项成为新的决定PM种类的数据。&lt;/p&gt;
+
+&lt;p&gt;第三世代PM的数据组织结构如下表：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/new_zpsgftuasfy.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The order of the structures is determined by the personality value of the Pokémon modulo 24, as shown below, where G, A, E, and M stand for the substructures growth, attacks, EVs and condition, and miscellaneous, respectively.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;数据子结构的组织顺序取决于PM的PID对24取模的结果。下表中的G，A，E，M分别代表成长(Growth)、攻击(Attack)、努力值及状态(EVs &amp;amp; Conditions)和杂项(Miscellnaneous)。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;数据组织顺序如下表：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/order_zpsayigkyvu.png&quot; alt=&quot;order&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;deoxys&quot;&gt;一个操作实例：获得一个从蛋中孵出的Deoxys&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;事先的准备&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;一只级别足够高，有一些HP努力值的PM（这里以&lt;a href=&quot;http://bulbapedia.bulbagarden.net/wiki/Swampert_(Pok%C3%A9mon)&quot;&gt;#260 Swampert&lt;/a&gt;为例），用以触发红榴漏洞。下面的叙述中&lt;strong&gt;简称A&lt;/strong&gt;。&lt;/li&gt;
+  &lt;li&gt;两箱子&lt;strong&gt;完全相同&lt;/strong&gt;的某PM，以一定间隔置于1、2号两个箱子（这里以&lt;a href=&quot;http://bulbapedia.bulbagarden.net/wiki/Kadabra_(Pok%C3%A9mon)&quot;&gt;#064 Kadabra&lt;/a&gt;为例，具体间隔可以参考下面的例子），下述&lt;strong&gt;简称B&lt;/strong&gt;。这样多数量的同一PM可以使用绿宝石战斗边疆的复制漏洞获得。至于对于这只PM有何具体要求，&lt;strong&gt;在下文中&lt;/strong&gt;会详细说明。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;步骤&lt;/h3&gt;
+
+&lt;p&gt;1.将A置于队首，并控制它到1点HP。带上若干只处于濒死状态的PM，最后再带上一只B。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step1_zpszf4leukb.png&quot; alt=&quot;step1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2.喂给A一个红榴果(Pomeg Cherry)，触发漏洞。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step2_a_zpsmlbsouox.png&quot; alt=&quot;step2_a&quot; /&gt; &lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step2_b_zpsdfwhmtcb.png&quot; alt=&quot;step2_b&quot; /&gt;	&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step2_c_zps2az8rwrk.png&quot; alt=&quot;step2_c&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3.触发与野生PM的战斗，由A切换到B，然后逃跑。（为了顺利逃跑，建议在PM等级较低的地方进行本步骤）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step3_a_zpskbgdif30.png&quot; alt=&quot;step3_a&quot; /&gt;	
+&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step3_b_zps02kglcos.png&quot; alt=&quot;step3_b&quot; /&gt;	
+&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step3_c_zpsvliyyb1n.png&quot; alt=&quot;step3_c&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;4.将B存回电脑的任意一个箱子。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step4_zps1vffikmc.png&quot; alt=&quot;step4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;5.对A使用任意能够回复HP的道具，下图以高级伤药(Hyper Potion)为例&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step5_zpshyoyrpmh.png&quot; alt=&quot;step5&quot; /&gt;	&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step5_a_zpskk2gdtk9.png&quot; alt=&quot;step5_a&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;6.再次去野外触发遇敌。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step6_a_zpsibprqd8r.png&quot; alt=&quot;step6_a&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;调出“Pokemon”菜单，查看A的状态	。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step6_b_zpsqpmz6zvt.png&quot; alt=&quot;step6_b&quot; /&gt;
+&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step6_c_zpsn1pdfonb.png&quot; alt=&quot;step6_c&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;按下方向键，直到光标正好指到“CANCEL”选项。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step6_d_zpssialri5v.png&quot; alt=&quot;step6_d&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;按住&lt;/strong&gt;上方向键，直到出现下图所示的情形。然后退出战斗。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step6_e_zpssw69axlv.png&quot; alt=&quot;step6_e&quot; /&gt;
+&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step6_f_zps91eu99a0.png&quot; alt=&quot;step6_f&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;7.如果足够幸运，你可以在1，2号箱子里的众多坏蛋(bag eggs)中找到一个好蛋(egg)；如果不够幸运，请从步骤1重新来过。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step7_zps6h1jmpar.png&quot; alt=&quot;step7&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;8.将这个蛋孵化，得到目标。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step8_zpskanqgtqd.png&quot; alt=&quot;step8&quot; /&gt;
+&lt;img src=&quot;http://i1292.photobucket.com/albums/b580/shankenew/step8_a_zpsqhldsjid.png&quot; alt=&quot;step8_a&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;一些重要的补充说明&lt;/h3&gt;
+
+&lt;p&gt;最终得到的蛋孵化出什么完全由B决定，所以下面详细解释B和孵化出的东西有何关联。&lt;/p&gt;
+
+&lt;p&gt;这里的B，也就是勇吉拉(&lt;a href=&quot;http://bulbapedia.bulbagarden.net/wiki/Kadabra_(Pok%C3%A9mon)&quot;&gt;#064 Kadabra&lt;/a&gt;)，我选取了&lt;a href=&quot;http://bulbapedia.bulbagarden.net/wiki/Personality_value&quot;&gt;PID&lt;/a&gt;为：0x56B0009。经过红榴漏洞，得到的目标的PID会在此基础上加上0x40000000。也就是0x456B0009。0x56B0009对24取模为1，0x456B0009对24取模为17。对应一开始的表格，也就是数据顺序由 &lt;strong&gt;GAME&lt;/strong&gt; 变为 &lt;strong&gt;EMAG&lt;/strong&gt; 。目标的 &lt;strong&gt;Growth&lt;/strong&gt; 对应原来的 &lt;strong&gt;EVs &amp;amp; Conditions&lt;/strong&gt;。而 &lt;strong&gt;Growth&lt;/strong&gt; 的前两个字节(byte)决定了PM的种类。也就是我们只需要让原来的 &lt;strong&gt;EVs &amp;amp; Conditions&lt;/strong&gt; 的前两个字节是我们目标PM的_编号_（要查询编号，请参看&lt;a href=&quot;http://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_index_number_(Generation_III)&quot;&gt;本链接&lt;/a&gt;）。这里 &lt;strong&gt;#386 Deoxys&lt;/strong&gt; 的编号16进制下为0x19A，分拆成两个byte就是 0x1 和 0x9A，在十进制下为 1 和 154，也就是我们只需要让勇吉拉(&lt;a href=&quot;http://bulbapedia.bulbagarden.net/wiki/Kadabra_(Pok%C3%A9mon)&quot;&gt;#064 Kadabra&lt;/a&gt;)的物攻努力值为1，HP努力值为154，经过红榴漏洞之后，得到的蛋的PM种类对应的就是 #386 Deoxys。&lt;/p&gt;
+
+&lt;p&gt;总结：以上改变蛋的物种效果，本质上就是利用游戏漏洞，打乱了原来的数据结构的排列顺序。至于以何种方式打乱，需要知道我们使用的称为“B”的PM的PID是多少，然后查上面提供的表格。一般来说，以努力值(E)代替物种(G)的方法比较普适，可以得到全部的386种PM。&lt;/p&gt;
+
+&lt;p&gt;也有一些PID提供了以攻击技能(A)代替物种(G)的置乱方式。具体技能的编码表，我会在最后的参考链接里给出。由于技能数目不足386，这种方式不能获得全部386种PM，但相对上述的以(E)代替(G)的方式也有好处，就是有机会通过这种方式获得理想个体值的PM。上述的那个实例 &lt;em&gt;几乎&lt;/em&gt; 无法对获得PM的个体值做任何的控制。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;最后提醒一下&lt;/strong&gt;：由于数据被全部打乱，获得的PM的技能会出现非法乱码，为了防止出现死机等不良情况，请把获得的PM放到饲养屋提升足够的等级，用合法技能全部替代后再领出。&lt;/p&gt;
+
+&lt;p&gt;吐槽：我获得的这只Deoxys是不听话的，而听话与否由Miscellaneous的最后一个bit决定，然而本例中的置乱方式下，目标的(M)对应的是原来的(A)，最后一个bit和第四个技能的PP数相关，为了使最后一个bit为1，我需要第四个技能的PP数在128以上。而游戏内PP数最大就是64，也就是我无论如何都不可能在游戏内通过这种方式获得一只听话的Deoxys，真是残念。&lt;/p&gt;
+
+&lt;p&gt;通过这个漏洞获得的坏蛋可以参与与NPC的战斗，而且可以无限制逃跑，该成果可以应用到绿宝石速通上，然而好像红榴果获得的时机在流程中有些偏后了。&lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;利用pomeg glitch向游戏注入汇编代码还在研究中&lt;/del&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;参考链接&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=nOEwPnv2TFM&quot;&gt;视频教程&lt;/a&gt;（Youtube链接）&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=KME8eusvRAc&quot;&gt;Video tutorial for Pomeg Berry Glitch&lt;/a&gt;（关于红榴漏洞的视频）&lt;/p&gt;
+
+&lt;p&gt;Bulbapedia相关页面：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_data_substructures_in_Generation_III&quot;&gt;Pokémon data substructures in Generation III&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_index_number_(Generation_III)&quot;&gt;List of Pokémon by index number (Generation III)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://bulbapedia.bulbagarden.net/wiki/List_of_moves&quot;&gt;List of moves&lt;/a&gt;（第三世代最后一个技能是 #354 Psycho Boost）&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://bulbapedia.bulbagarden.net/wiki/Glitzer_Popping&quot;&gt;Glitzer Popping&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+    </content>
+  </entry>
+  
+  
+</feed>
