@@ -1,6 +1,6 @@
 # Site wide configuration
 
-title:
+title: Bruce Steveon's Blog
 description:
 logo: # 120x120 px default image used for Twitter summary card
 teaser: # 400x250 px default teaser image used in image archive grid
@@ -37,8 +37,8 @@ titlecase: true
 
 # Site owner
 owner:
-  name:
-  email:
+  name: Bruce Steveon
+  email: tianyu.bruce@gmail.com
   twitter:
   google:
     ad-client:
