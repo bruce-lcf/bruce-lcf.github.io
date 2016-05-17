@@ -1,14 +1,13 @@
 ---
 layout: article
-title: Hatching Any Eggs by Pomeg Glitch
-date: 2016-05-16T20:19:51+08:00
+title: Hatch ANY Pokemon in Emerald
+date: 2016-05-17T14:07:45+08:00
 modified:
 excerpt:
 image:
   feature:
   teaser: lugia.png
   thumb:
-avatar: bio-photo.png
 ads: false
 ---
 
@@ -137,3 +136,4 @@ Bulbapedia相关页面：
 - [List of Pokémon by index number (Generation III)](http://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_index_number_(Generation_III))
 - [List of moves](http://bulbapedia.bulbagarden.net/wiki/List_of_moves)（第三世代最后一个技能是 #354 Psycho Boost）
 - [Glitzer Popping](http://bulbapedia.bulbagarden.net/wiki/Glitzer_Popping)
+
